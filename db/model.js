@@ -1,8 +1,8 @@
 const cassandra = require('cassandra-driver');
 const distance = cassandra.types.distance;
-const { networkInterfaces } = require('os');
+const os = require('os');
 
-const contactPoint = networkInterfaces.eth0.filter(int => int.family !== 'IPv6')[0].address;
+const contactPoint = os.networkInterfaces.eth0.filter(int => int.family !== 'IPv6')[0].address;
 
 const client = new cassandra.Client({
   contactPoints: [contactPoint],
